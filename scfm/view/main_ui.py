@@ -72,8 +72,8 @@ class AppMainForm(QMainWindow):
         config_asset_FICO_meta_action = self.create_action("Asset FICO based meta", slot=self.config_asset_FICO_meta, shortcut="Ctrl+F", tip="configure asset's meta based on FICO range")
         config_tranch_meta_action = self.create_action("Tranch list", slot=self.config_tranch_list, shortcut="Ctrl+T", tip="Manage the tranches")
         
-        config_save_meta_action = self.create_action("Save current configuration", slow=self.save_config, shortcut="Ctrl+C", tip="Store configuration for reloading later.")
-        self.add_actions(self.configure_menu, (config_raw_data_meta,config_asset_FICO_meta,None, config_tranch_meta, )  )
+        config_save_meta_action = self.create_action("Save current configuration", slot=self.save_config, shortcut="Ctrl+C", tip="Store configuration for reloading later.")
+        self.add_actions(self.configure_menu, (config_load_meta_action, config_raw_data_meta_action,config_asset_FICO_meta_action,None, config_tranch_meta_action, None, config_save_meta_action)  )
 
         # help main menu
         self.help_menu = self.menuBar().addMenu("&Help")
@@ -94,18 +94,26 @@ class AppMainForm(QMainWindow):
             self.canvas.print_figure(path, dpi=self.dpi)
             self.statusBar().showMessage('Saved to %s' % path, 2000)
 
-    def raw_data_map(self):
+    def load_config(self):
+        return
+
+    def config_raw_data(self):
         return
     
-    def asset_general_meta(self):
+    def config_asset_meta_CPR(self):
+        return
+    def config_asset_meta_CDR(self):
         return
     
-    def asset_FICO_meta(self):
+    def config_asset_FICO_meta(self):
         return
     
-    def tranch_list(self):
+    def config_tranch_list(self):
         return
-    
+
+    def save_config(self):
+        return
+
     def on_about(self):
         msg = """ Structured Cash Flow Modeler
         Author:Wei Li
